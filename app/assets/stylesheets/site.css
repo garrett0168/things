@@ -1,0 +1,13 @@
+body {
+  padding-top: 50px;
+}
+
+#pagination {
+  cursor: pointer;
+}
+
+#map, .map-view {
+  display: block;
+  height: 400px;
+  width: 100%;
+}

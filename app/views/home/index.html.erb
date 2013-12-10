@@ -1,0 +1,43 @@
+<div class="container" ng-controller="ThingsController">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Find awesome things near you</h1>
+      <p>Click the point where you want to search, then a your search radius</p>
+
+      <google-map center="mapData.center" zoom="mapData.zoom" markers="mapData.markers" selected-point="mapData.selectedPoint">
+      </google-map>
+
+      <form ng-submit="search()" ng-hide="thingsSearched">
+        <div class="form-group">
+          <label for="distance">Search radius (meters)</label>
+          <input type="text" class="form-control" required ng-required="true" ng-model="distance" ng-disabled="searching" id="distance" placeholder="Enter search radius">
+        </div>
+        <div class="form-group" ng-show="searching">
+          Searching....Please be patient.
+        </div>
+        <div class="form-group alert alert-danger" ng-show="error">
+          {{ error }}
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <div ng-show="thingsSearched">
+        <h1>Search Results</h1>
+        <div ng-show="things.length == 0">
+          <div class="form-group alert alert-danger" ng-show="searchError">
+            {{ searchError }}
+          </div>
+          <div>No things were found. Try again.</div>
+        </div>
+        <div ng-show="things.length > 0">
+          <h3>We found a total of {{ totalThings }} things</h3>
+          <div id="pagination" ng-show="totalThings > thingsPerPage">
+            <pagination total-items="totalThings" page="currentPage" items-per-page="thingsPerPage" max-size="50" boundary-links="true" rotate="false"></pagination>
+          </div>
+        </div>
+        <br>
+        <a href="javascript:void(0)" class="btn btn-primary" ng-click="searchAgain()">Search again</a>
+      </div>
+    </div>
+  </div>
+</div>

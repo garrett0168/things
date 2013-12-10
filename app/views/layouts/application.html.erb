@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="thingsApp">
+<head>
+  <title>Things!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">Things!</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-content">
+    <%= yield %>
+  </div>
+
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+  <%= javascript_include_tag "application" %>
+</body>
+</html>
