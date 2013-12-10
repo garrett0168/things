@@ -1,5 +1,6 @@
-things
+Things
 ======
+Search for a million things near you.
 
 Prerequisites
 =============
